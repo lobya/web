@@ -247,6 +247,7 @@ self.addEventListener('fetch', function(event) {
         caches.open(cacheName).then(function(cache) {
           return cache.match(urlsToCacheKeys.get(url)).then(function(response) {
             if (response) {
+              console.log('Serving from cache: ', url);
               return response;
             }
             throw Error('The cached response that was expected is missing.');
